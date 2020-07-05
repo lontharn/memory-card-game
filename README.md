@@ -42,6 +42,7 @@ A minimal memory card game app developed with [Flask](http://flask.pocoo.org/) f
 ```
 * http://127.0.0.1:5000 to play the game.
 * http://127.0.0.1:5000/api/v1/doc to open swagger ui document
+![Demo swagger ui](https://user-images.githubusercontent.com/12784602/86539802-b6396300-bf29-11ea-94c7-a4ba442eadbe.png)
 
 
 ### Testing with docker-compose
