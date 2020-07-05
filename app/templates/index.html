@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Memory Card Game</title>
+    <link rel="icon" type="image/png" href="static/images/bluePi.jpeg">
+
+    <!-- Bootstrap core CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+  </head>
+  <body class="d-flex flex-column h-100">
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Click:</p>
+                        <p id="clickAmountValue">{{ user.clicks|default('-', true) }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>My Best:</p>
+                        <p id="myBestValue">{{ user.my_best|default('-', true) }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Global Best:</p>
+                        <p id="globalBestValue">{{ board.global_best|default('-', true) }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" id="newGameButton">New Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10" id="board">
+                <div class="row"></div>
+            </div>
+        </div>
+      </div>
+  </body>
+
+<script type="text/javascript" src="static/index.js"></script>
+<script>
+    $(document).ready(function() {
+        login('bob', 'pass');
+        newGame({{ user.id }});
+
+        $('.card').each(function (index) {
+            $(this).on('click', function () {
+                pickCard($(this).data('id'), {{ user.id }});
+            });
+        });
+        $('#newGameButton').click(function () {
+            newGame({{ user.id }});
+        });
+    });
+</script>
+</html>
