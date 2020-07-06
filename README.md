@@ -46,6 +46,17 @@ A minimal memory card game app developed with [Flask](http://flask.pocoo.org/) f
 ![Demo swagger ui](https://user-images.githubusercontent.com/12784602/86539802-b6396300-bf29-11ea-94c7-a4ba442eadbe.png)
 
 
+## Authentication
+##### User credentials
+username: akekatharn, password: password
+
+##### To get JWT token
+
+```
+>>> curl -X POST "http://127.0.0.1:5000/api/v1/users/login" -H "accept: application/json" -H "Content-Type: application/json" -d "{ "username": "akekatharn", "password": "password"}"
+```
+
+
 ### Testing with docker-compose
 ```
 docker exec -i -t memory-card-game_app_1 flask test
