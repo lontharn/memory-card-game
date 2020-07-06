@@ -34,7 +34,7 @@ def create_app(env, additional_settings={}):
 
         # Initiate User and Card Record
         cards = []
-        user = User(username='bob', password=pbkdf2_sha256.hash('pass'))
+        user = User(username='akekatharn', password=pbkdf2_sha256.hash('password'))
         board = Board(name='Memory Card Game', global_best=20)
         for i in range(1, 7):
             cards.append(Card(value=i, position=0, user=user))

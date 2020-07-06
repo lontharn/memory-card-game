@@ -38,27 +38,19 @@ def db(app, request):
     _db.app = app
     _db.create_all()
 
-    yield _db
-
-    _db.drop_all()
-
+    return _db
 
 
 @pytest.fixture(scope='function')
 def session(db, request):
     """ Creates a new database session for a test """
     connection = db.engine.connect()
-    transaction = connection.begin()
 
     options = dict(bind=connection, binds={})
     session = db.create_scoped_session(options=options)
 
     db.session = session
-    yield db.session
-
-    transaction.rollback()
-    connection.close()
-    session.remove()
+    return db.session
 
 
 
